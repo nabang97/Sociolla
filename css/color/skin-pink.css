@@ -1,0 +1,200 @@
+/*-----------------------------------------------------------------------------------
+
+  Template Name: Subash Ecommerce Responsive Bootstrap Template
+  Description: This is html5 template
+  Author: codecarnival
+  Version: 1.0
+  Design and Developed by: codecarnival
+
+-----------------------------------------------------------------------------------*/
+.theme-bg {background: #ff4081;}
+.blog-item .blog-desc {
+  background: rgba(35, 149, 236, 0.95) none repeat scroll 0 0;
+}
+.mark, mark {
+  background: ##ff4081 none repeat scroll 0 0;
+}
+.mean-container .mean-nav ul li a:hover {
+  color: ##ff4081;
+}
+textarea:focus {
+  border-color: #ff4081;
+}
+.up-comming-time .time-count {
+  border: 1px solid #ff4081;
+}
+.contact-address:hover i {
+  background: #ff4081 none repeat scroll 0 0;
+}
+span.tooltip-content {
+  color: #ff4081;
+}
+a.button {
+  background: #ff4081;
+}
+.pro-tab-menu ul li.active a {
+  border-bottom: 1px solid #ff4081;
+}
+.nivo-controlNav a.active {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.submit-btn-1 {
+  background: #ff4081;
+}
+.header-search-inner::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1px solid #ff4081;
+}
+
+/*default*/
+a:focus,
+a:hover {
+    color: #ff4081;
+    text-decoration: none;
+}
+.text-theme { color:#ff4081; }
+.btn-hover-2::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.slick-arrow-1 .slick-arrow:hover {
+  color: #ff4081;
+}
+.slick-arrow-2 .arrow-prev.slick-arrow:hover, .slick-arrow-2 .arrow-next.slick-arrow:hover {
+  color: #ff4081;
+  border-color: #ff4081;
+}
+.slick-arrow-3 .arrow-prev.slick-arrow:hover, .slick-arrow-3 .arrow-next.slick-arrow:hover {
+  color: #ff4081;
+}
+.slick-dots-1 .slick-dots li.slick-active {
+  background: #ff4081;
+}
+.quick-add-to-cart .single_add_to_cart_button:hover {
+  background: #ff4081 none repeat scroll 0 0;
+}
+#scrollUp:hover {
+  background: #ff4081 none repeat scroll 0 0;
+}
+/*header*/
+.main-menu > li:hover > a{
+  color: #ff4081;
+}
+.dropdwn > li:hover > a{
+  color: #ff4081;
+}
+.main-menu > li > a::before, .dropdwn li a::before, .single-mega-item li a::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.single-mega-item > li:hover > a{
+  color: #ff4081;
+}
+.sticky .main-menu > li:hover > a{
+  color: #ff4081;
+}
+.total-cart-in:hover .cart-toggler > a {
+  color: #ff4081;
+}
+.del-icon > a:hover > i {
+  color: #ff4081;
+}
+.top-cart-inner.subtotal span {
+  color: #ff4081;
+}
+.user-meta > li > ul > li > a:hover {
+  color: #ff4081;
+}
+/*footer*/
+.footer-menu li:hover a, .footer-menu li:hover a i {
+  color: #ff4081;
+}
+.border-left::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.copyright-text p a:hover {
+  color: #ff4081;
+}
+.footer-menu-2 li::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+/*Theme */
+.pro-rating a {
+  color: #ff4081;
+}
+.action-button > li:hover > a {
+  background: #ff4081;
+  border-color: #ff4081;
+}
+.banner-button a:hover {
+  color: #ff4081;
+}
+.product-item-2 .action-button > li:hover > a {
+  color: #ff4081;
+}
+.pro-tab-menu-2 ul li.active::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.breadcrumb-list > li:hover::before {
+  color: #ff4081;
+}
+.breadcrumb-list > li:hover > a {
+  color: #ff4081;
+}
+.shop-tab li.active a {
+  color: #ff4081;
+}
+.shop-pagination > li.active a,
+.shop-pagination > li:hover a {
+  border-color: #ff4081;
+  color: #ff4081;
+}
+.widget-search button:hover {
+  color: #ff4081;
+}
+.product-cat .treeview .collapsable > a {
+  color: #ff4081;
+}
+.ui-slider .ui-slider-range {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.widget-color ul li::before {
+  background: #ff4081 none repeat scroll 0 0;
+}
+.p-c a.active img {
+  border: 1px solid #ff4081;
+}
+.cart-tab li a.active {
+  color: #ff4081;
+}
+.cart-tab li a.active span {
+  border: 1px solid #ff4081;
+}
+.product-remove a:hover {
+  color: #ff4081;
+}
+.product-add-cart a:hover {
+  color: #ff4081;
+}
+.order-total {
+  color: #ff4081;
+}
+.order-total-price {
+  color: #ff4081;
+}
+.widget-tags-list li:hover a {
+  color: #ff4081;
+}
+.blog-like-share li a:hover {
+  color: #ff4081;
+}
+.reply-delate li:hover a {
+  color: #ff4081;
+}
+.bg-shape:hover:before {
+ background: #ff4081 none repeat scroll 0 0;
+}

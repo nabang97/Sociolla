@@ -1,0 +1,171 @@
+/*--------------------------------------------------------------
+
+  Template Name: Subash Ecommerce Responsive Bootstrap Template
+  Description: This is html5 template
+  Author: codecarnival
+  Version: 1.0
+  Design and Developed by: codecarnival
+
+Note: This is the file where you can add your custom styles to change the look of the theme. But don't modify "style.css" file.
+
+---------------------------------------------------------------*/
+
+/* ----------------------------------------------------
+	You can put your custom css code here:
+-------------------------------------------------------*/
+ p.desc{
+  padding: 0px !important;
+  font-size:12px !important;
+  text-transform: none !important;
+}
+.card-header.payment{
+  padding: 15px !important;
+  background-color: white;
+  color: #666666;
+  border-top: 1px solid #ddd !important;
+  border-left: 1px solid #ddd !important;
+  border-right: 1px solid #ddd !important;
+  border-bottom: 0px;
+  font-weight: bold;
+}
+ul.list-group.list-group-flush>li{
+  border-radius: 0px;
+  font-size: 15px;
+  color: #666666;
+}
+div.flex-box{
+  padding: 10px;
+  background-color: #f8f8f8 !important;
+  border: 1px solid #eee !important;
+  border-radius: 5px !important;
+}
+div.flex-box>.form-inline>h6{
+  padding: 0px;
+  margin: 5px !important;
+}
+
+.tab-pane #tb-bni{
+  padding: 15px !important;
+}
+.flex-box>div>ul>li{
+  list-style: initial !important;
+  margin-left: 15px;
+}
+.panel-group>ul>li{
+  padding: 2px !important;
+}
+.grid-order{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-auto-rows:auto auto auto !important;
+  grid-template-areas:
+  "sociolla-name sociolla-ornum"
+  "date-status ."
+  "item-purchased btn-collapse-order" !important;
+}
+.sociolla-name{
+  grid-area: sociolla-name;
+  font-weight: bold;
+}
+.sociolla-ornum{
+  grid-area: sociolla-ornum !important;
+  font-weight: bold;
+color: #c60055;
+    text-align: right;
+}
+.date-status{
+  grid-area:date-status !important;
+  font-size: 10px;
+}
+.item-purchased{
+  grid-area:item-purchased !important;
+  font-size: 12px;
+}
+.btn-collapse-order{
+  grid-area:btn-collapse-order !important;
+  color: #ff4081;
+  text-align: right;
+}
+.item-purchased:before {
+    content: "";
+    width: 10px;
+    height: 11px;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI…AgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==) no-repeat top;
+    background-size: 10px 11px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+  }
+.bullet {
+    top: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background-color: #8c8582!important;
+    border-radius: 50%;
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.price-order{
+  font-weight: bold !important;
+  color: black !important;
+}
+.order-atribute{
+  font-size: 12px;
+  line-height: 2px;
+}
+.order-title{
+  margin-top: 0px;
+}
+.bold-text{
+  font-weight: bold!important;
+}
+.shipping-address-panel{
+
+}
+.confirmModal{
+  z-index: 99999;
+}
+.header-area{
+    z-index:1000;
+}
+.grid-payment{
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-row: auto auto;
+grid-template-areas:
+"ordernum-pay payment-price"
+"payment-date payment-puritem" !important;
+}
+.payment-ordernum{
+  grid-area:ordernum-pay;
+}
+.payment-price{
+    grid-area:payment-price;
+    text-align: right;
+}
+.payment-date{
+    grid-area:payment-date;
+}
+.payment-puritem{
+    grid-area:payment-puritem;
+    text-align: right;
+}
+.panelform-confirm-payment{
+  margin-top: 30px;
+  padding: 10px;
+}
+.upload-panel{
+  border: 1px;
+  border-style: dashed;
+  border-color: #ff4081;
+  border-radius: 2px;
+  padding: 15px;
+}
+.upload-panel>p{
+  text-align: center !important;
+}
