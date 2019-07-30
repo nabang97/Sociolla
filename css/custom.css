@@ -169,3 +169,27 @@ grid-template-areas:
 .upload-panel>p{
   text-align: center !important;
 }
+.transfer-to{
+  align-items: center;
+}
+.transfer-to>span{
+  align-content: center;
+}
+.transfer-to>h6{
+  text-transform: uppercase!important;
+  font-weight: bold;
+  color: #ddd;
+}
+.transfer-to>div>span,.transfer-to>h4{
+  color: black;
+}
+.color-black{
+  color: black;
+}
+.transfer-to>li{
+  text-align: center !important;
+  color:#ff4081 !important;
+}
+.pengantar{
+margin-top: 30px !important;
+}

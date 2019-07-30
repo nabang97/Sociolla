@@ -215,6 +215,26 @@
 <script src="js/plugins.js"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="js/main.js"></script>
+<script type="text/javascript">
+var sPath = window.location.pathname;
+//var sPage = sPath.substring(sPath.lastIndexOf('\\') + 1);
+var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+alert(sPage);
+switch (sPage) {
+  case "/":
+    document.title= "Home | Sociolla"
+    break;
+  case "/cart.php":
+      document.title= "Shopping Cart | Sociolla"
+    break;
+  case "/order-history.php#profile":
+    document.title = "Profile | Sociolla"
+    break;
+  default: document.title= "Sociolla"
+
+}
+
+</script>
 
 </body>
 

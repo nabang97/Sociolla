@@ -404,7 +404,8 @@
                                             <h6 class="text-black-5 mb-0">Thank you. Your order has been received.</h6>
                                         </div>
                                         <div class="order-info p-30 mb-10">
-                                            <ul class="order-info-list">
+                                          <h6 class="text-black-5 mb-0 bold-text text-center">SILAKAN SELESAIKAN PEMBAYARAN ANDA</h6>
+                                            <!-- <ul class="order-info-list">
                                                 <li>
                                                     <h6>order no</h6>
                                                     <p>m 2653257</p>
@@ -421,14 +422,38 @@
                                                     <h6>order no</h6>
                                                     <p>m 2653257</p>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </div>
                                         <div class="row">
                                             <!-- our order -->
                                             <div class="col-md-6">
                                                 <div class="payment-details p-30">
-                                                    <h6 class="widget-title border-left mb-20">our order</h6>
-                                                    <table>
+                                                  <div class="transfer-to">
+                                                    <h6 class="text-center">transfer ke</h6>
+                                                  <center>  <img src="img/bank/BNI_logo.svg" alt="" height="20px"><center>
+                                                      <div class="text-center" style="padding:10px;">
+                                                        <span>an. PT Social Bella Indonesia</span>
+                                                      </div>
+                                                      <h3 class="text-center bold-text">677886779</h3>
+                                                      <li><a class="text-center" href"#">Salin No. Rek</a></li>
+                                                  </div>
+                                                  <br>
+                                                  <div class="transfer-to">
+                                                    <h6 class="text-center">Jumlah yang harus dibayar</h6>
+                                                    <!-- <span></span> -->
+                                                      <h3 class="text-center bold-text">Rp 998,032</h3>
+                                                    <li><a class="text-center" href="#">Salin Jumlah</a></li>
+
+                                                  </div>
+                                                  <div class="pengantar">
+                                                    <p class="text-center">
+                                                      Pastikan kamu melakukan pembayaran dalam waktu 24 jam setelah pesanan dibuat untuk menghindari pembatalan otomatis dan silakan lakukan konfirmasi pembayaran jika kamu sudah melakukan pembayaran di halaman Profile Anda.<br><br>
+                                                      Ayo kumpulkan Beauty Points setiap pembelian yang kamu lakukan.
+                                                    </p>
+                                                    <button class="submit-btn-1 black-bg btn-hover-2 form-control" type="submit" data-toggle="modal" data-target="#confirmModal">Confirmation payment</button>
+                                                  </div>
+
+                                                    <!-- <table>
                                                         <tr>
                                                             <td class="td-title-1">Dummy Product Name x 2</td>
                                                             <td class="td-title-2">$1855.00</td>
@@ -453,43 +478,48 @@
                                                             <td class="order-total">Order Total</td>
                                                             <td class="order-total-price">$2425.00</td>
                                                         </tr>
-                                                    </table>
+                                                    </table> -->
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="bill-details p-30">
-                                                    <h6 class="widget-title border-left mb-20">billing details</h6>
-                                                    <ul class="bill-address">
-                                                        <li>
-                                                            <span>Address:</span>
-                                                            28 Green Tower, Street Name, New York City, USA
-                                                        </li>
-                                                        <li>
-                                                            <span>email:</span>
-                                                            info@companyname.com
-                                                        </li>
-                                                        <li>
-                                                            <span>phone : </span>
-                                                            (+880) 19453 821758
-                                                        </li>
-                                                    </ul>
+                                                    <h6 class="widget-title border-left mb-20">YOUR ORDER</h6>
+                                                    <div class="">
+                                                      <p>
+                                                        <span>Nomor Pesanan</span><br>
+                                                        <span class="bold-text color-black">asfsgds</span>
+                                                      </p>
+                                                    </div>
+                                                    <div class="">
+                                                      <p>
+                                                        <span>Total Pesanan</span><br>
+                                                        <span class="bold-text color-black">Rp 242389</span>
+                                                      </p>
+                                                    </div>
+                                                    <div class="">
+                                                      <p>
+                                                        <span>Kode Unik</span><br>
+                                                        <span class="bold-text color-black">Rp 32</span>
+                                                      </p>
+                                                    </div>
                                                 </div>
                                                 <div class="bill-details pl-30">
-                                                    <h6 class="widget-title border-left mb-20">billing details</h6>
-                                                    <ul class="bill-address">
-                                                        <li>
-                                                            <span>Address:</span>
-                                                            28 Green Tower, Street Name, New York City, USA
-                                                        </li>
-                                                        <li>
-                                                            <span>email:</span>
-                                                            info@companyname.com
-                                                        </li>
-                                                        <li>
-                                                            <span>phone : </span>
-                                                            (+880) 19453 821758
-                                                        </li>
-                                                    </ul>
+                                                    <h6 class="widget-title border-left mb-20">informasi lebih lanjut</h6>
+                                                    <div class="">
+                                                      <p>
+                                                        <span class="bold-text color-black">Email</span><br>
+                                                        Punya pertanyaan seputar pesanan?<br>
+                                                        Silakan kirim email ke cs@sociolla.com<br>
+                                                        untuk pertanyaan seputar pembayaran silakan kirim email ke payment@sociolla.com
+                                                      </p>
+                                                    </div>
+                                                    <div class="">
+                                                      <p>
+                                                        <span class="bold-text color-black">Telepon</span><br>
+                                                        Kamu bisa menghubungi Customer Service di nomor telepon (021) 5080 6418<br>
+                                                        Senin - Jumat pukul 09.00 s/d 18.00
+                                                      </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -575,163 +605,5 @@
 
         </section>
         <!-- End page content -->
-
-        <!-- START FOOTER AREA -->
-        <footer id="footer" class="footer-area">
-            <div class="footer-top">
-                <div class="container-fluid">
-                    <div class="plr-185">
-                        <div class="footer-top-inner gray-bg">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-5 col-sm-4">
-                                    <div class="single-footer footer-about">
-                                        <div class="footer-logo">
-                                            <img src="img/logo/logo.png" alt="">
-                                        </div>
-                                        <div class="footer-brief">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the subas industry's standard dummy text ever since the 1500s,</p>
-                                            <p>When an unknown printer took a galley of type and If you are going to use a passage of Lorem Ipsum scrambled it to make.</p>
-                                        </div>
-                                        <ul class="footer-social">
-                                            <li>
-                                                <a class="facebook" href="" title="Facebook"><i class="zmdi zmdi-facebook"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="google-plus" href="" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="twitter" href="" title="Twitter"><i class="zmdi zmdi-twitter"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="rss" href="" title="RSS"><i class="zmdi zmdi-rss"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 hidden-md hidden-sm">
-                                    <div class="single-footer">
-                                        <h4 class="footer-title border-left">Shipping</h4>
-                                        <ul class="footer-menu">
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>New Products</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Discount Products</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Best Sell Products</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Popular Products</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Manufactirers</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Suppliers</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Special Products</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-3 col-sm-4">
-                                    <div class="single-footer">
-                                        <h4 class="footer-title border-left">my account</h4>
-                                        <ul class="footer-menu">
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Account</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Wishlist</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Cart</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Sign In</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Registration</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Check out</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Oder Complete</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <div class="single-footer">
-                                        <h4 class="footer-title border-left">Get in touch</h4>
-                                        <div class="footer-message">
-                                            <form action="#">
-                                                <input type="text" name="name" placeholder="Your name here...">
-                                                <input type="text" name="email" placeholder="Your email here...">
-                                                <textarea class="height-80" name="message" placeholder="Your messege here..."></textarea>
-                                                <button class="submit-btn-1 mt-20 btn-hover-1" type="submit">submit message</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom black-bg">
-                <div class="container-fluid">
-                    <div class="plr-185">
-                        <div class="copyright">
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                    <div class="copyright-text">
-                                        <p>&copy; <a href="https://themeforest.net/user/codecarnival/portfolio" target="_blank">CodeCarnival</a> 2016. All Rights Reserved.</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                    <ul class="footer-payment text-right">
-                                        <li>
-                                            <a href="#"><img src="img/payment/1.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/payment/2.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/payment/3.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/payment/4.jpg" alt=""></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- END FOOTER AREA -->
-    </div>
-    <!-- Body main wrapper end -->
-
-
-    <!-- Placed JS at the end of the document so the pages load faster -->
-
-    <!-- jquery latest version -->
-    <script src="js/vendor/jquery-3.1.1.min.js"></script>
-    <!-- Bootstrap framework js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- jquery.nivo.slider js -->
-    <script src="lib/js/jquery.nivo.slider.js"></script>
-    <!-- All js plugins included in this file. -->
-    <script src="js/plugins.js"></script>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="js/main.js"></script>
-
-</body>
-
-</html>
+        <?php include('confirm-payment.php') ?>
+<?php include('footer.php') ?>
