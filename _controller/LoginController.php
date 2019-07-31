@@ -25,6 +25,7 @@ class LoginController
     ];
 
     $this->pdo = new PDO($dsn, $username, $password, $options);
+    session_start();
   }
 
   function loginUser($username, $password)
@@ -34,8 +35,22 @@ class LoginController
     $user = $stmt->fetch(PDO::FETCH_OBJ);
 
     if ($user) {
-      session_start();
-      $_SESSION['auth'] = $user;      
+      $_SESSION['auth'] = $user;
+      header('Location: ../index.php');
+      exit();
+    }else{
+      header('Location: ../login.php');
+      $_SESSION['flash'] = "Wrong username or password!";
+      exit();
+    }
+  }
+
+  public function logoutUser()
+  {
+    if(isset($_SESSION['auth'])){
+      $_SESSION['auth'] = null;
+      header('Location: ../index.php');
+      exit();
     }
   }
 }
