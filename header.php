@@ -55,9 +55,14 @@
                             <div class="top-link clearfix">
                                 <ul class="link f-right">
                                     <li>
-                                        <a href="my-account.html">
+                                        <a href="#">
                                             <i class="zmdi zmdi-account"></i>
-                                            My Account
+                                            <?php session_start() ?>
+                                            <?php if (isset($_SESSION['auth'])): ?>
+                                              <?= $_SESSION['auth']->username ?>
+                                            <?php else: ?>
+                                              My Account
+                                            <?php endif; ?>
                                         </a>
                                     </li>
                                     <li>
@@ -67,10 +72,17 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="login.html">
+                                      <?php if (isset($_SESSION['auth'])): ?>
+                                        <a href="_action/LogoutUser.php">
+                                            <i class="zmdi zmdi-lock"></i>
+                                            Logout
+                                        </a>
+                                      <?php else: ?>
+                                        <a href="login.php">
                                             <i class="zmdi zmdi-lock"></i>
                                             Login
                                         </a>
+                                      <?php endif; ?>
                                     </li>
                                 </ul>
                             </div>

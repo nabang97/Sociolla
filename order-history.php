@@ -1,5 +1,7 @@
 <?php include('header.php') ?>
 
+<?php require_once('_auth/AuthPage.php') ?>
+
         <!-- BREADCRUMBS SETCTION START -->
         <div class="breadcrumbs-section plr-200 mb-80">
             <div class="breadcrumbs overlay-bg">
