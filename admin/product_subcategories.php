@@ -17,15 +17,23 @@ require_once('parts/head.php');
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Data Jenis Produk</h4>
-                  <p class="card-description">
-                    Menampilkan data jenis produk yang ada di Sociolla.
-                  </p>
-                  <table class="table" id="dataTableku">
+                  <div class="row" style="margin-bottom:30px;">
+                    <div class="col-md-6">
+                      <p class="card-description">
+                        Menampilkan data subkategori dari kategori produk yang ada di Sociolla.<br>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-info btn-small float-right btn-add" data-toggle="modal" data-target="#myModal">Add Data</button>
+                    </div>
+                  </div>
+                  <table class="table" id="tableSubCategories">
                     <thead>
                       <tr>
                         <th>No</th>
                         <th>Kode</th>
                         <th>Name</th>
+                        <th>Kategori</th>
                         <th>Jenis Produk</th>
                         <th>Action</th>
                       </tr>
@@ -37,9 +45,10 @@ require_once('parts/head.php');
                         foreach ($product_subcategories as $subcategory) {
                           echo  "<tr>
                                   <td></td>
-                                  <td>".$subcategory['id_subcategory']."</td>
-                                  <td>".$subcategory['name']."</td>
-                                  <td>".$subcategory['kategori']."</td>
+                                  <td>".$subcategory->id_subcategory."</td>
+                                  <td>".$subcategory->name."</td>
+                                  <td>".$subcategory->kategori."</td>
+                                  <td>".$subcategory->tipe_produk."</td>
                                   <td></td>
                                   </tr>";
                         }
@@ -67,4 +76,5 @@ require_once('parts/head.php');
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+    <?php include('modal/add_subcategory.php') ?>
 <?php include('parts/footer_js.php') ?>

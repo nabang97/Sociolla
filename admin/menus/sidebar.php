@@ -31,10 +31,27 @@
           <li class="nav-item"> <a class="nav-link" href="product_categories.php">Product Categories</a></li>
           <li class="nav-item"> <a class="nav-link" href="product_subcategories.php">Product Subcategories</a></li>
           <li class="nav-item"> <a class="nav-link" href="brands.php">Brands</a></li>
-          <li class="nav-item"> <a class="nav-link" href="variants.php">Variants</a></li>
           <li class="nav-item"> <a class="nav-link" href="products.php">Products</a></li>
+          <li class="nav-item"> <a class="nav-link" href="products_variants.php">Products Variants</a></li>
         </ul>
       </div>
+
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#variant-menu" aria-expanded="false" aria-controls="variant-menu">
+        <span class="menu-title">Input Variants</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-plus-circle menu-icon"></i>
+      </a>
+      <div class="collapse" id="variant-menu">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="variant_colors.php">Variant Colors</a></li>
+          <li class="nav-item"> <a class="nav-link" href="variant_sizes.php">Variant Sizes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="variant_shades.php">Variant Shades</a></li>
+          <li class="nav-item"> <a class="nav-link" href="variant_weights.php">Variant Weights</a></li>
+        </ul>
+      </div>
+
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">

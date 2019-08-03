@@ -1,5 +1,6 @@
 <?php
 require_once('parts/head.php');
+
 ?>
 
   <div class="container-scroller">
@@ -16,30 +17,45 @@ require_once('parts/head.php');
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Data Jenis Produk</h4>
-                  <p class="card-description">
-                    Menampilkan data jenis produk yang ada di Sociolla.
-                  </p>
-                  <table class="table" id="tableTypes">
+                  <h4 class="card-title">Data Varian Produk</h4>
+                  <div class="row" style="margin-bottom:30px;">
+                    <div class="col-md-6">
+                      <p class="card-description">
+                        Menampilkan data kategori dari jenis produk yang ada di Sociolla.<br>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-info btn-small float-right btn-add" data-toggle="modal" data-target="#myModal">Add Data</button>
+                    </div>
+                  </div>
+                  <table class="table" id="tableProductVariants">
                     <thead>
                       <tr>
-                        <th>No</th>
                         <th>Kode</th>
-                        <th>Name</th>
+                        <th>Product Name</th>
+                        <th>Shade</th>
+                        <th>Color</th>
+                        <th>Weight</th>
+                        <th>Size</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      $product_types = $controllerAdmin->showProductTypes();
+                      $products = $controllerAdmin->showAllProductVariants();
 
-                        foreach ($product_types as $type) {
+                        foreach ($products as $product) {
                           echo  "<tr>
-                                  <td></td>
-                                  <td>".$type['id_type']."</td>
-                                  <td>".$type['name']."</td>
-                                  <td></td>
-                                  </tr>";
+                                  <td>".$product->code."</td>
+                                  <td>".$product->produk."</td>
+                                  <td>".$product->shade."</td>
+                                  <td>".$product->color."</td>
+                                  <td>".$product->weight."</td>
+                                  <td>".$product->size."</td>
+                                  <td>
+                                  <a href='#'><i class='mdi mdi-magnify' data-toggle='modal' data-target='#viewProduct'></i> detail</a>
+                                  </td>
+                                </tr>";
                         }
                        ?>
 
@@ -65,4 +81,5 @@ require_once('parts/head.php');
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+<?php include('modal/add_product_variant.php') ?>
 <?php include('parts/footer_js.php') ?>

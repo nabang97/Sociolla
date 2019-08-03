@@ -5,7 +5,7 @@
     $data = $_POST['selected'];
     $subcategories = $start->showProductSubCategories($data);
     foreach($subcategories as $subcategory){
-      echo "<option>".$subcategory->name."</option>";
+      echo "<option value='". $subcategory->id_subcategory ."'>".$subcategory->name."</option>";
     }
   }else {
     echo "salah";

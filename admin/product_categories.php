@@ -17,9 +17,16 @@ require_once('parts/head.php');
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Data Jenis Produk</h4>
-                  <p class="card-description">
-                    Menampilkan data jenis produk yang ada di Sociolla.
-                  </p>
+                  <div class="row" style="margin-bottom:30px;">
+                    <div class="col-md-6">
+                      <p class="card-description">
+                        Menampilkan data kategori dari jenis produk yang ada di Sociolla.<br>
+                      </p>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-info btn-small float-right btn-add" data-toggle="modal" data-target="#myModal">Add Data</button>
+                    </div>
+                  </div>
                   <table class="table" id="tableCategories">
                     <thead>
                       <tr>
@@ -37,9 +44,9 @@ require_once('parts/head.php');
                         foreach ($product_categories as $category) {
                           echo  "<tr>
                                   <td></td>
-                                  <td>".$category['id_category']."</td>
-                                  <td>".$category['name']."</td>
-                                  <td>".$category['tipe_produk']."</td>
+                                  <td>".$category->id_category."</td>
+                                  <td>".$category->name."</td>
+                                  <td>".$category->tipe_produk."</td>
                                   <td></td>
                                   </tr>";
                         }
@@ -67,4 +74,5 @@ require_once('parts/head.php');
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+  <?php include('modal/add_category.php') ?>
 <?php include('parts/footer_js.php') ?>

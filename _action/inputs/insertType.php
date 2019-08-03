@@ -8,9 +8,5 @@ $controllerAdmin = new AdminController();
   $name= $_POST['name'];
   if ((isset($type_id) != "") && (isset($name) != "")) {
       $insertProdyctType = $controllerAdmin->insertProductType($type_id, $name);
-      echo "<tr>
-            <td>".$type_id."</td>
-            <td>".$name."</td>
-            </tr>";
   }
 ?>

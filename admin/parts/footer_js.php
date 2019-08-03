@@ -17,24 +17,49 @@
 <!-- script datatable category -->
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#tableCategories').DataTable();
-} );
-</script>
-<!-- script datatable jenis produ -->
-<script type="text/javascript">
-$(document).ready( function () {
     $('#tableTypes').DataTable();
 } );
-</script>
-<!-- script datatable subcategories -->
-<script type="text/javascript">
 $(document).ready( function () {
-    $('#dataTableku').DataTable();
+    $('#tableCategories').DataTable();
 } );
+
+$(document).ready( function () {
+    $('#tableSubCategories').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableBrands').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableProducts').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableColors').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableSizes').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableShades').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#tableWeights').DataTable();
+} );
+$(document).ready( function () {
+    $('#tableProductVariants').DataTable();
+} );
+
 </script>
 
 <!-- AJAX -->
 <?php include('ajax_insert.php') ?>
+<?php include('ajax_display.php') ?>
+<?php include('product_view.php') ?>
 </body>
 
 </html>

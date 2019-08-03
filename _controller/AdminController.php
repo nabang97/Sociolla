@@ -33,9 +33,8 @@ class AdminController
   function insertBrand($brand_id,$name){
     $stmt = $this->pdo->prepare("INSERT INTO brands SET brand_id=:brand_id, name=:name");
     $stmt->execute(['brand_id' => $brand_id, 'name' => $name]);
-    $user = $stmt->fetch(PDO::FETCH_OBJ);
-    header('Location: ../admin/input/input_brand.php');
-    exit();
+    $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    return $brands;
   }
 
   function insertProductType($id_type,$name){
@@ -46,21 +45,51 @@ class AdminController
 
   }
 
-
   function insertSubCategory($id_subcategory,$name,$id_category){
     $stmt = $this->pdo->prepare("INSERT INTO product_subcategories SET id_subcategory=:id_subcategory, name=:name, id_category=:id_category");
     $stmt->execute(['id_subcategory' => $id_subcategory, 'name' => $name, 'id_category'=> $id_category]);
     $stmt->fetch(PDO::FETCH_OBJ);
-    header('Location: ../admin/input/input_brand.php');
-    exit();
   }
 
   function insertCategory($id_category,$name,$id_type){
     $stmt = $this->pdo->prepare("INSERT INTO product_categories SET id_category=:id_category, name=:name, id_type=:id_type");
     $stmt->execute(['id_category' => $id_category, 'name' => $name, 'id_type'=>$id_type]);
     $user = $stmt->fetch(PDO::FETCH_OBJ);
-    header('Location: ../../admin/input/category.php');
-    exit();
+  }
+
+  function insertProduct($id,$name,$desc,$brand,$subcategory){
+    $stmt = $this->pdo->prepare("INSERT INTO products
+    SET code_product=:id, name=:name, description=:description, brand_id=:brand, id_subcategory=:subcategory ");
+    $stmt->execute(['id' => $id, 'name' => $name, 'description'=>$desc, 'brand'=>$brand,'subcategory'=>$subcategory]);
+    $user = $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  function insertVariantSize($name,$value){
+    $stmt = $this->pdo->prepare("INSERT INTO variant_size
+    SET name=:name, value=:value ");
+    $stmt->execute(['name' => $name, 'value' => $value]);
+    $size = $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  function insertVariantShades($name){
+    $stmt = $this->pdo->prepare("INSERT INTO variant_shades
+    SET name=:name");
+    $stmt->execute(['name' => $name]);
+    $size = $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  function insertVariantColors($name,$value){
+    $stmt = $this->pdo->prepare("INSERT INTO variant_colors
+    SET name=:name, value=:value ");
+    $stmt->execute(['name' => $name, 'value' => $value]);
+    $size = $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  function insertVariantWeight($name,$value){
+    $stmt = $this->pdo->prepare("INSERT INTO variant_weight
+    SET name=:name, value=:value ");
+    $stmt->execute(['name' => $name, 'value' => $value]);
+    $size = $stmt->fetch(PDO::FETCH_OBJ);
   }
 
   // --------------------GET ALL DATA------------------//
@@ -68,9 +97,10 @@ class AdminController
     $stmt = $this->pdo->prepare("SELECT * FROM brands");
     $stmt->execute();
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
-    $brands = $stmt->fetchAll();
+    $brands = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $brands;
   }
+
   function showProductTypes(){
     $stmt = $this->pdo->prepare("SELECT * FROM product_types");
     $stmt->execute();
@@ -83,17 +113,70 @@ class AdminController
     $stmt = $this->pdo->prepare("SELECT pc.*, pt.name as tipe_produk FROM product_categories as pc LEFT JOIN product_types as pt ON pc.id_type = pt.id_type");
     $stmt->execute();
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
-    $product_categories = $stmt->fetchAll();
+    $product_categories = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $product_categories;
   }
   function showProductSubCategoriesAll(){
-    $stmt = $this->pdo->prepare("SELECT ps.*, pc.name as kategori FROM product_subcategories as ps LEFT JOIN product_categories as pc ON ps.id_category = pc.id_category");
+    $stmt = $this->pdo->prepare("SELECT ps.*, pc.name as kategori, pt.name as tipe_produk FROM product_subcategories as ps
+      LEFT JOIN product_categories as pc ON ps.id_category = pc.id_category
+      LEFT JOIN product_types as pt ON pc.id_type = pt.id_type");
     $stmt->execute();
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
-    $product_subcategories = $stmt->fetchAll();
+    $product_subcategories = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $product_subcategories;
   }
-
+  function showProducts(){
+    $stmt = $this->pdo->prepare("SELECT p.*, b.name as brand, ps.name as subcategory FROM products as p
+      LEFT JOIN brands as b ON p.brand_id = b.brand_id
+      LEFT JOIN product_subcategories as ps ON p.id_subcategory = ps.id_subcategory");
+    $stmt->execute();
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $products= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $products;
+  }
+  function showVariantColors(){
+    $stmt = $this->pdo->prepare("SELECT * FROM variant_colors");
+    $stmt->execute();
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $colors= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $colors;
+  }
+  function showVariantSizes(){
+    $stmt = $this->pdo->prepare("SELECT * FROM variant_size");
+    $stmt->execute();
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $sizes= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $sizes;
+  }
+  function showVariantShades(){
+    $stmt = $this->pdo->prepare("SELECT * FROM variant_shades");
+    $stmt->execute();
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $sizes= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $sizes;
+  }
+  function showVariantWeights(){
+    $stmt = $this->pdo->prepare("SELECT * FROM variant_weight");
+    $stmt->execute();
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $sizes= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $sizes;
+  }
+  function showAllProductVariants(){
+    $stmt = $this->pdo->prepare(
+     "SELECT p.code_product as code, p.name as produk, vs.name as shade, vc.value as color, vw.value as weight, vsz.value  as size, dv.price as price, dv.stock as stock, dv.photo_url as photo
+      FROM detail_variants as dv
+      LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+      LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
+      LEFT JOIN products as p ON dp.code_product = p.code_product
+      LEFT JOIN variant_shades as vs ON dv.shade_id=vs.shade_id
+      LEFT JOIN variant_weight as vw ON dv.weight_id=vw.weight_id
+      LEFT JOIN variant_size as vsz ON dv.size_id=vsz.size_id
+    ");
+    $stmt->execute();
+    $products= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $products;
+  }
 // ------------------------GET SELECTED DATA ----------------
 
   function showSelectedProductCategories($product_type){
@@ -110,6 +193,14 @@ class AdminController
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
     $product_subcategories = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $product_subcategories;
+  }
+
+  function showSelectedProduct($subcategory,$brand){
+    $stmt = $this->pdo->prepare("SELECT p.code_product as code, p.name as name FROM products as p WHERE p.id_subcategory=:subcategory AND p.brand_id=:brand");
+    $stmt->execute(['subcategory' => $subcategory, 'brand' => $brand]);
+    // $brands = $stmt->fetch(PDO::FETCH_OBJ);
+    $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $products;
   }
 
 

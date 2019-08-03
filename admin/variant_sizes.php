@@ -14,37 +14,41 @@ require_once('parts/head.php');
         <div class="content-wrapper">
           <!-- start table -->
           <div class="col-lg-12 grid-margin stretch-card">
+            <!-- Trigger the modal with a button -->
+
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Data Jenis Produk</h4>
+                  <h4 class="card-title">Data Varian Sizes</h4>
                   <div class="row" style="margin-bottom:30px;">
                     <div class="col-md-6">
                       <p class="card-description">
-                        Menampilkan data kategori dari jenis produk yang ada di Sociolla.<br>
+                        Menampilkan data jenis produk yang ada di Sociolla.<br>
                       </p>
                     </div>
                     <div class="col-md-6">
                       <button type="button" class="btn btn-info btn-small float-right btn-add" data-toggle="modal" data-target="#myModal">Add Data</button>
                     </div>
                   </div>
-                  <table class="table" id="tableBrands">
+
+
+                  <table class="table" id="tableSizes">
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Kode</th>
                         <th>Name</th>
+                        <th>Size</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      $brands = $controllerAdmin->showBrand();
+                      $sizes = $controllerAdmin->showVariantSizes();
 
-                        foreach ($brands as $brand) {
+                        foreach ($sizes as $size) {
                           echo  "<tr>
                                   <td></td>
-                                  <td>".$brand->brand_id."</td>
-                                  <td>".$brand->name."</td>
+                                  <td>".$size->name."</td>
+                                  <td>".$size->value."</td>
                                   <td></td>
                                   </tr>";
                         }
@@ -72,5 +76,5 @@ require_once('parts/head.php');
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-  <?php include('modal/add_brand.php') ?>
+<?php include('modal/add_sizes.php') ?>
 <?php include('parts/footer_js.php') ?>
