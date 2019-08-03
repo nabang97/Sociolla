@@ -58,6 +58,11 @@ class AdminController
   }
 
   function insertProduct($id,$name,$desc,$brand,$subcategory){
+
+    $insertDetailProduct = $this->pdo->prepare("INSERT INTO detail_product
+    SET id_detail_product=:detailproduct, code_product=:code");
+    $insertDetailProduct->execute(['detailproduct'=>$id, 'code'=>$id]);
+
     $stmt = $this->pdo->prepare("INSERT INTO products
     SET code_product=:id, name=:name, description=:description, brand_id=:brand, id_subcategory=:subcategory ");
     $stmt->execute(['id' => $id, 'name' => $name, 'description'=>$desc, 'brand'=>$brand,'subcategory'=>$subcategory]);
@@ -82,6 +87,13 @@ class AdminController
     $stmt = $this->pdo->prepare("INSERT INTO variant_colors
     SET name=:name, value=:value ");
     $stmt->execute(['name' => $name, 'value' => $value]);
+    $size = $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  function insertProductVariant($code,$color,$shade,$size,$weight,$disc,$price,$stock,$photo){
+    $stmt = $this->pdo->prepare("INSERT INTO detail_variants
+    SET id_detail_product=:detailproduct, color_id=:color, shade_id=:shade, size_id=:size, weight_id=:weight, discount=:disc, price=:price, stock=:stock, photo_url=:photo");
+    $stmt->execute(['detailproduct'=>$code, 'color'=>$color, 'shade'=>$shade,'size'=>$size,'weight'=>$weight,'disc'=>$disc,'price'=>$price,'stock'=>$stock,'photo'=>$photo]);
     $size = $stmt->fetch(PDO::FETCH_OBJ);
   }
 
@@ -159,8 +171,8 @@ class AdminController
     $stmt = $this->pdo->prepare("SELECT * FROM variant_weight");
     $stmt->execute();
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
-    $sizes= $stmt->fetchAll(PDO::FETCH_OBJ);
-    return $sizes;
+    $weights= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $weights;
   }
   function showAllProductVariants(){
     $stmt = $this->pdo->prepare(

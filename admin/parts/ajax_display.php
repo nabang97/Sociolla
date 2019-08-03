@@ -247,6 +247,7 @@ $(document).ready(function(){ /* PREPARE THE SCRIPT */
         });
         $("#select-weight").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
             var selected = $(this).val();
+            console.log(selected);
             if (selected == 'other') {
               $('#input-weight').show();
             }else{

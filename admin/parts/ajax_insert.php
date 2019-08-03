@@ -117,6 +117,31 @@ function insertVariantSize(){
   }
 } //end function
 
+function AddSize(){
+  var add = document.getElementById('add-size').value.split(';');
+  var name=add[0];
+  var value=add[1];
+
+  if (name == "" || value == "") {
+    console.log("jangan kosong");
+  }else{
+    console.log("Insert Data");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insertVariantSize.php",
+        method : "POST",
+        data:{'name':name, 'value':value},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          alert('success');
+          // DisplayVariantSizes();
+         //  $('#tableTypes').html(data);
+         // alert("success insert data!");
+        }
+      });//end ajax
+  }
+} //end function
+
 function insertVariantWeight(){
   var name = document.getElementById('name').value;
   var value = document.getElementById('value').value;
@@ -133,6 +158,74 @@ function insertVariantWeight(){
         success: function(data){
 
           DisplayVariantWeights();
+         //  $('#tableTypes').html(data);
+         // alert("success insert data!");
+        }
+      });//end ajax
+  }
+} //end function
+
+function insertProductVariant(){
+  var product = document.getElementById('select-product').value;
+  var price = document.getElementById('price').value;
+  var discount = document.getElementById('discount').value;
+  var photo_url = document.getElementById('photo_url').value;
+  var stock = document.getElementById('stock').value;
+  var shade =document.getElementById('select-shade').value;
+  var color =document.getElementById('select-color').value;
+  var size =document.getElementById('select-size').value;
+  var weight =document.getElementById('select-weight').value;
+
+  console.log(product+"|"+price+"|"+discount+"|"+photo_url+"|"+stock+"|"+shade+"|"+color+"|"+size+"|"+weight+"");
+
+  if (product == "") {
+    console.log("jangan kosong");
+  }else{
+    console.log("Insert Data");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{
+          'product_variant':1,
+          'product':product,
+          'price':price,
+          'discount':discount,
+          'photo_url':photo_url,
+          'shade':shade,
+          'color':color,
+          'size':size,
+          'weight':weight,
+          'stock':stock
+        },
+        async : true,
+        dataType : 'text',
+        success: function(data){
+            alert('success');
+          //DisplayVariantWeights();
+         //  $('#tableTypes').html(data);
+         // alert("success insert data!");
+        }
+      });//end ajax
+  }
+} //end function
+
+function AddWeight(){
+  var add = document.getElementById('add-weight').value.split(';');
+  var name = add[0];
+  var value=add[1];
+  if (name == "" || value == "") {
+    console.log("jangan kosong");
+  }else{
+    console.log("Insert Data");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{'weight':1,'name':name, 'value':value},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+
+          // DisplayVariantWeights();
          //  $('#tableTypes').html(data);
          // alert("success insert data!");
         }
@@ -163,6 +256,31 @@ function insertVariantColor(){
   }
 } //end function
 
+function AddColor(){
+  var add = document.getElementById('add-color').value.split(';');
+  var name=add[0];
+  var value=add[1];
+
+  if (name == "" || value == "") {
+    console.log("jangan kosong");
+  }else{
+    console.log("Insert Data");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{'color':1,'name':name, 'value':value},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          alert('success');
+          // DisplayVariantColors();
+         //  $('#tableTypes').html(data);
+         // alert("success insert data!");
+        }
+      });//end ajax
+  }
+} //end function
+
 function insertVariantShade(){
   var name = document.getElementById('name').value;
   if (name == "") {
@@ -185,6 +303,27 @@ function insertVariantShade(){
   }
 } //end function
 
+function AddShade(){
+  var name = document.getElementById('add-shade').value;
+  if (name == "") {
+    alert('fill all the blank');
+  }else{
+    console.log("Insert Data");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{'shade':1,'name':name},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          alert('success');
+          // DisplayVariantShades();
+         //  $('#tableTypes').html(data);
+         // alert("success insert data!");
+        }
+      });//end ajax
+  }
+} //end function
 
 
 function insertProduct(){
