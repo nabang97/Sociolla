@@ -20,6 +20,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="place_order.php">
+        <span class="menu-title">Place Order</span>
+        <i class="mdi mdi-basket menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <span class="menu-title">Input Data</span>
         <i class="menu-arrow"></i>

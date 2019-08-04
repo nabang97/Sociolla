@@ -6,3 +6,8 @@
     max-width: 800px;
   }
 }
+.badge-status{
+  padding: 10px;
+  background-color: pink;
+  border-radius: 20px;
+}

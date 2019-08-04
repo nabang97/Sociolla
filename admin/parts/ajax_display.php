@@ -151,6 +151,45 @@ function DisplayProducts(){
       });//end ajax
 } //end function
 
+function acceptOrder(){
+  var order_number = document.getElementById('nomor-order').textContent;
+  var customer = document.getElementById('email-customer').textContent;
+  var status = document.getElementById('order-status').textContent;
+  console.log(order_number+"|"+customer+"|"+status+"");
+    // $.ajax({ /* THEN THE AJAX CALL */
+    //     url: "../_action/gets/getDisplay.php",
+    //     method : "POST",
+    //     data:{'display-products':1},
+    //     async : true,
+    //     success: function(data){
+    //       console.log(data);
+    //
+    //       //$('#tableSubCategories').find('tbody').html(data);
+    //     }
+    //   });//end ajax
+} //end function
+
+function showOrderDetail(id){
+  var order_number = document.getElementById('nomor-order').textContent;
+  var customer = document.getElementById('email-customer').textContent;
+  var status = document.getElementById('order-status').textContent;
+  console.log(order_number+"|"+customer+"|"+status+"");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/gets/getModal.php",
+        method : "POST",
+        data:{
+          'modal-detail':1,
+          'id':id
+        },
+        async : true,
+        success: function(data){
+          console.log(data['order_number']);
+
+          //$('#tableSubCategories').find('tbody').html(data);
+        }
+      });//end ajax
+} //end function
+
 $(document).ready(function(){ /* PREPARE THE SCRIPT */
     $("#product_type").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
      var selected = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */

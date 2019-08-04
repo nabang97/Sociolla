@@ -199,6 +199,24 @@ class AdminController
     $products= $stmt->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
+
+  function showOrders(){
+    $stmt = $this->pdo->prepare(
+     "SELECT O.*,
+      sa.firstname as firstname,
+      sa.lastname as lastname,
+      sa.subdistrict as kelurahan,
+      sa.postal_code as pos,
+      sa.address as address,
+      sa.phone_number as phone
+      FROM orders as O
+      LEFT JOIN shipping_address as sa ON O.shipping_address = sa.id_address
+      LEFT JOIN users as c ON O.customer = c.email
+    ");
+    $stmt->execute();
+    $orders= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $orders;
+  }
 // ------------------------GET SELECTED DATA ----------------
 
   function showSelectedProductCategories($product_type){
@@ -223,6 +241,22 @@ class AdminController
     // $brands = $stmt->fetch(PDO::FETCH_OBJ);
     $products = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $products;
+  }
+  
+  function showSelectedOrder($id){
+    $stmt = $this->pdo->prepare("SELECT O.*,sa.firstname as firstname,
+      sa.lastname as lastname,
+      sa.subdistrict as kelurahan,
+      sa.postal_code as pos,
+      sa.address as address,
+      sa.phone_number as phone
+      FROM orders as O
+      LEFT JOIN shipping_address as sa ON O.shipping_address = sa.id_address
+      LEFT JOIN users as c ON O.customer = c.email
+      WHERE O.order_number = '".$id."'");
+    $stmt->execute();
+    $orders= $stmt->fetch(PDO::FETCH_OBJ);
+    return $orders;
   }
 
 
