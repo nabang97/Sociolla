@@ -34,6 +34,9 @@ $controllerSystem = new SystemController();
     <link href="css/color/color-core.css" data-style="styles" rel="stylesheet">
     <!-- User style -->
     <link rel="stylesheet" href="css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/cart/jquery.cookie.js" charset="utf-8"></script>
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -104,7 +107,7 @@ $controllerSystem = new SystemController();
                             <!-- logo -->
                             <div class="col-md-2 col-sm-6 col-xs-12">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="index.php">
                                         <img src="img/logo/sociolla-small.jpg" alt="main logo">
                                     </a>
                                 </div>
@@ -113,10 +116,16 @@ $controllerSystem = new SystemController();
                             <div class="col-md-8 hidden-sm hidden-xs">
                                 <nav id="primary-menu">
                                     <ul class="main-menu text-center">
-                                        <li><a href="index.html">SHOP BY CATEGORIES</a>
+                                        <li>
+                                            <a href="index.php">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-left-sidebar.php">Product</a>
+                                        </li>
+                                        <li><a href="index.php">Shop By Categories</a>
                                             <ul class="dropdwn">
                                                 <li>
-                                                    <a href="index.html">MAKEUP</a>
+                                                    <a href="index.php">MAKEUP</a>
                                                 </li>
                                                 <li>
                                                     <a href="index-2.html">SKIN CARE</a>
@@ -138,7 +147,7 @@ $controllerSystem = new SystemController();
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="mega-parent"><a href="#">elements</a>
+                                        <!-- <li class="mega-parent"><a href="#">elements</a>
                                             <div class="mega-menu-area clearfix">
                                                 <div class="mega-menu-link mega-menu-link-4  f-left">
                                                     <ul class="single-mega-item">
@@ -263,8 +272,8 @@ $controllerSystem = new SystemController();
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li class="mega-parent"><a href="shop.html">Products</a>
+                                        </li> -->
+                                        <!-- <li class="mega-parent"><a href="shop.html">Products</a>
                                             <div class="mega-menu-area clearfix">
                                                 <div class="mega-menu-link f-left">
                                                     <ul class="single-mega-item">
@@ -346,8 +355,8 @@ $controllerSystem = new SystemController();
                                                     </a>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li class="mega-parent"><a href="#">Pages</a>
+                                        </li> -->
+                                        <!-- <li class="mega-parent"><a href="#">Pages</a>
                                             <div class="mega-menu-area mega-menu-area-2 clearfix">
                                                 <div class="mega-menu-link mega-menu-link-2  f-left">
                                                     <ul class="single-mega-item">
@@ -406,8 +415,8 @@ $controllerSystem = new SystemController();
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li><a href="blog.html">Blog</a>
+                                        </li> -->
+                                        <!-- <li><a href="blog.html">Blog</a>
                                             <ul class="dropdwn">
                                                 <li>
                                                     <a href="blog.html">Blog</a>
@@ -431,12 +440,12 @@ $controllerSystem = new SystemController();
                                                     <a href="blog-details.html">Blog Details</a>
                                                 </li>
                                             </ul>
+                                        </li> -->
+                                        <li>
+                                            <a href="#">About us</a>
                                         </li>
                                         <li>
-                                            <a href="about.html">About us</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact</a>
+                                            <a href="#">Contact</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -464,22 +473,31 @@ $controllerSystem = new SystemController();
                                     <div class="total-cart f-left">
                                         <div class="total-cart-in">
                                             <div class="cart-toggler">
-                                                <a href="#">
-                                                    <span class="cart-quantity">02</span><br>
+                                                <a href="cart.php">
+                                                    <span class="cart-quantity">
+                                                      <b id="cartItem">
+                                                        <?php
+                                                          if (isset($_SESSION['cart_item']))
+                                                            echo sizeOf($_SESSION['cart_item']);
+                                                          else
+                                                            echo 0;
+                                                        ?>
+                                                      </b>
+                                                    </span><br>
                                                     <span class="cart-icon">
                                                         <i class="zmdi zmdi-shopping-cart-plus"></i>
                                                     </span>
                                                 </a>
                                             </div>
                                             <ul>
-                                                <li>
+                                                <!-- <li>
                                                     <div class="top-cart-inner your-cart">
                                                         <h5 class="text-capitalize">Your Cart</h5>
                                                     </div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                <!-- <li>
                                                     <div class="total-cart-pro">
-                                                        <!-- single-cart -->
+
                                                         <div class="single-cart clearfix">
                                                             <div class="cart-img f-left">
                                                                 <a href="#">
@@ -506,7 +524,7 @@ $controllerSystem = new SystemController();
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <!-- single-cart -->
+
                                                         <div class="single-cart clearfix">
                                                             <div class="cart-img f-left">
                                                                 <a href="#">
@@ -534,8 +552,8 @@ $controllerSystem = new SystemController();
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                <!-- <li>
                                                     <div class="top-cart-inner subtotal">
                                                         <h4 class="text-uppercase g-font-2">
                                                             Total  =
@@ -556,7 +574,7 @@ $controllerSystem = new SystemController();
                                                             <a href="#">Check out</a>
                                                         </h4>
                                                     </div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>

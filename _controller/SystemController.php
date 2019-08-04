@@ -64,7 +64,7 @@ class SystemController
      dv.shade_id as shade_id, vs.value as shade,
      dv.weight_id as weight_id, vw.value as weight,
      dv.size_id as size_id,vsz.value  as size,
-     dv.color_id as color_id,
+     dv.color_id as color_id, vc.value as color,
      dv.price as price,
      dv.stock as stock,
      dv.photo_url as photo
@@ -100,7 +100,7 @@ class SystemController
      dv.shade_id as shade_id, vs.value as shade,
      dv.weight_id as weight_id, vw.value as weight,
      dv.size_id as size_id,vsz.value  as size,
-     dv.color_id as color_id,
+     dv.color_id as color_id, vc.value as color, vc.name as color_name,
      dv.price as price,
      dv.stock as stock,
      dv.photo_url as photo
@@ -115,7 +115,17 @@ class SystemController
       WHERE dv.id_detail_product = '".$code."' AND dv.shade_id = ".$shade." AND dv.size_id=".$size." AND dv.weight_id=".$weight."");
 
      $query->execute();
-     $products= $query->fetchAll(PDO::FETCH_OBJ);
+     $products= $query->fetch(PDO::FETCH_OBJ);
      return $products;
+  }
+
+  // ---------------------------- Untuk mengambil data varian disini ----------------------------------
+
+  public function getOneDataColor($id)
+  {
+    $query = $this->pdo->prepare("SELECT * FROM variant_colors WHERE id=:id");
+    $query->execute(['id' => $id]);
+    $data= $query->fetch(PDO::FETCH_OBJ);
+    return $data;
   }
 }
