@@ -11,9 +11,7 @@ $controllerAdmin = new AdminController();
   $subcategory=$_POST['subcategory'];
 
   if ((isset($id) != "") && (isset($name)!="") && (isset($desc) != "") && (isset($brand) != "") && (isset($subcategory)!="")) {
+
     $controllerAdmin->insertProduct($id,$name,$desc,$brand,$subcategory);
   }
   ?>
-  <script type="text/javascript">
-    console.log(<?php $subcategory; ?>);
-  </script>

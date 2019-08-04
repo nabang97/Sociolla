@@ -215,6 +215,7 @@
 <script src="js/plugins.js"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="js/main.js"></script>
+<script src="js/ajax_display.js"></script>
 <!-- <script type="text/javascript">
 var sPath = window.location.pathname;
 //var sPage = sPath.substring(sPath.lastIndexOf('\\') + 1);

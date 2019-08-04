@@ -1,3 +1,9 @@
+<?php
+require_once('_controller/SystemController.php');
+
+$controllerSystem = new SystemController();
+ ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 

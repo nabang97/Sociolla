@@ -58,15 +58,25 @@ class AdminController
   }
 
   function insertProduct($id,$name,$desc,$brand,$subcategory){
+    try {
 
-    $insertDetailProduct = $this->pdo->prepare("INSERT INTO detail_product
-    SET id_detail_product=:detailproduct, code_product=:code");
-    $insertDetailProduct->execute(['detailproduct'=>$id, 'code'=>$id]);
+      $stmt = $this->pdo->prepare("INSERT INTO products
+      SET code_product=:id, name=:name, description=:description, brand_id=:brand, id_subcategory=:subcategory ");
+      $stmt->execute(['id' => $id, 'name' => $name, 'description'=>$desc, 'brand'=>$brand,'subcategory'=>$subcategory]);
+      $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-    $stmt = $this->pdo->prepare("INSERT INTO products
-    SET code_product=:id, name=:name, description=:description, brand_id=:brand, id_subcategory=:subcategory ");
-    $stmt->execute(['id' => $id, 'name' => $name, 'description'=>$desc, 'brand'=>$brand,'subcategory'=>$subcategory]);
-    $user = $stmt->fetch(PDO::FETCH_OBJ);
+      $insertDetailProduct = $this->pdo->prepare("INSERT INTO detail_products
+      SET id_detail_product=:detailproduct, code_product=:code");
+      $insertDetailProduct->execute(['detailproduct'=>$id, 'code'=>$id]);
+
+    } catch (Exception $e) {
+      throw $e;
+      die('query erro');
+
+    }
+
+
+
   }
 
   function insertVariantSize($name,$value){

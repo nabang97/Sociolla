@@ -350,7 +350,7 @@ function insertProduct(){
         async : true,
         dataType : 'text',
         success: function(data){
-
+        alert('Success');
           DisplayProducts();
          //  $('#tableTypes').html(data);
          // alert("success insert data!");
