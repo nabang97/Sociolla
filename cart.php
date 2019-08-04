@@ -81,84 +81,51 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <!-- tr -->
-                                                        <tr>
-                                                            <td class="product-thumbnail">
-                                                                <div class="pro-thumbnail-img">
-                                                                    <img src="img/product/REAL TECHNIQUES.jpg" alt="">
-                                                                </div>
-                                                                <div class="pro-thumbnail-info text-left">
-                                                                    <h6 class="product-title-2">
-                                                                        <a href="#">1786 Everyday Essentials Set</a>
-                                                                    </h6>
-                                                                    <p>Brand: REAL TECHNIQUES</p>
-                                                                    <!-- <p>Model: Grand s2</p>
-                                                                    <p>Color: Black, White</p> -->
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-price">Rp 320,320</td>
-                                                            <td class="product-quantity">
-                                                                <div class="cart-plus-minus f-left">
-                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-subtotal">Rp 320,320</td>
-                                                            <td class="product-remove">
-                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        <!-- tr -->
-                                                        <!-- <tr>
-                                                            <td class="product-thumbnail">
-                                                                <div class="pro-thumbnail-img">
-                                                                    <img src="img/cart/2.jpg" alt="">
-                                                                </div>
-                                                                <div class="pro-thumbnail-info text-left">
-                                                                    <h6 class="product-title-2">
-                                                                        <a href="#">dummy product name</a>
-                                                                    </h6>
-                                                                    <p>Brand: Brand Name</p>
-                                                                    <p>Model: Grand s2</p>
-                                                                    <p> Color: Black, White</p>
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-price">$560.00</td>
-                                                            <td class="product-quantity">
-                                                                <div class="cart-plus-minus f-left">
-                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-subtotal">$1020.00</td>
-                                                            <td class="product-remove">
-                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                            </td>
-                                                        </tr> -->
-                                                        <!-- tr -->
-                                                        <!-- <tr>
-                                                            <td class="product-thumbnail">
-                                                                <div class="pro-thumbnail-img">
-                                                                    <img src="img/cart/3.jpg" alt="">
-                                                                </div>
-                                                                <div class="pro-thumbnail-info text-left">
-                                                                    <h6 class="product-title-2">
-                                                                        <a href="#">dummy product name</a>
-                                                                    </h6>
-                                                                    <p>Brand: Brand Name</p>
-                                                                    <p>Model: Grand s2</p>
-                                                                    <p> Color: Black, White</p>
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-price">$560.00</td>
-                                                            <td class="product-quantity">
-                                                                <div class="cart-plus-minus f-left">
-                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                                                </div>
-                                                            </td>
-                                                            <td class="product-subtotal">$1020.00</td>
-                                                            <td class="product-remove">
-                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                            </td>
-                                                        </tr> -->
+
+                                                        <?php if (isset($_SESSION['cart_item'])): ?>
+                                                          <?php foreach ($_SESSION['cart_item'] as $cart): ?>
+                                                            <tr>
+                                                                <td class="product-thumbnail">
+                                                                    <div class="pro-thumbnail-img">
+                                                                        <img src="<?= $cart->photo ?>" alt="">
+                                                                    </div>
+                                                                    <div class="pro-thumbnail-info text-left">
+                                                                        <h6 class="product-title-2">
+                                                                            <a href="<?= $cart->url ?>">
+                                                                              <?php if ($cart->shade != "Tidak ada varian"): ?>
+                                                                                <?= $cart->shade ?>
+                                                                              <?php endif; ?>
+                                                                              <?= $cart->product ?>
+                                                                              <?php if ($cart->weight != "Tidak ada varian"): ?>
+                                                                                <?= $cart->weight ?>
+                                                                              <?php endif; ?>
+                                                                              <?php if ($cart->size != "Tidak ada varian"): ?>
+                                                                                <?= $cart->size ?>
+                                                                              <?php endif; ?>
+                                                                              <?php if ($cart->color != "Tidak ada varian"): ?>
+                                                                                <?= $cart->color ?>
+                                                                              <?php endif; ?>
+                                                                            </a>
+                                                                        </h6>
+                                                                        <p>Brand: <?= $cart->brand ?></p>
+                                                                        <!-- <p>Model: Grand s2</p>
+                                                                        <p>Color: Black, White</p> -->
+                                                                    </div>
+                                                                </td>
+                                                                <td class="product-price">Rp <?= number_format(($cart->price),0,',','.') ?></td>
+                                                                <td class="product-quantity">
+                                                                    <div class="cart-plus-minus f-left">
+                                                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                    </div>
+                                                                </td>
+                                                                <td class="product-subtotal">Rp <?= number_format(($cart->price),0,',','.') ?></td>
+                                                                <td class="product-remove">
+                                                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                          <?php endforeach; ?>
+                                                        <?php endif; ?>
+
                                                     </tbody>
                                                 </table>
                                             </div>
