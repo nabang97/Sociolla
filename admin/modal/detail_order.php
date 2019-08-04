@@ -9,9 +9,58 @@
         <center><h4 class="modal-title text-left">Modal Header</h4></center>
       </div>
       <div class="modal-body">
-        <span id="modalOrderNumber"></span><br>
-        <span id="modalEmail"></span><br>
-        <span></span><br>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <table>
+              <tr>
+                <td>No Order</td>
+                <td>:</td>
+                <td id="modalOrderNumber">tes</td>
+              </tr>
+              <tr>
+                <td>Tanggal Order</td>
+                <td>:</td>
+                <td id="modalDate">tes</td>
+              </tr>
+              <tr>
+                <td>Customer</td>
+                <td>:</td>
+                <td id="modalCustomer"></td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>:</td>
+                <td id="modalPhone">tes</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table>
+              <tr>
+                <td>Address</td>
+                <td>:</td>
+                <td id="modalOrderNumber">tes</td>
+              </tr>
+              <tr>
+                <td>Kelurahan</td>
+                <td>:</td>
+                <td id="modalKelurahan">tes</td>
+              </tr>
+              <tr>
+                <td>Kode Pos</td>
+                <td>:</td>
+                <td id="modalKodePos">tes</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td id="modalStatus">tes</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

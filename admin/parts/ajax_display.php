@@ -173,7 +173,7 @@ function showOrderDetail(id){
   var order_number = document.getElementById('nomor-order').textContent;
   var customer = document.getElementById('email-customer').textContent;
   var status = document.getElementById('order-status').textContent;
-  console.log(order_number+"|"+customer+"|"+status+"");
+  // console.log(order_number+"|"+customer+"|"+status+"");
     $.ajax({ /* THEN THE AJAX CALL */
         url: "../_action/gets/getModal.php",
         method : "POST",
@@ -183,9 +183,13 @@ function showOrderDetail(id){
         },
         async : true,
         success: function(data){
-          console.log(data['order_number']);
+          var obj = $.parseJSON(data);
+          console.log(obj);
 
-          //$('#tableSubCategories').find('tbody').html(data);
+          $('#modalOrderNumber').html(obj.order_number);
+          $('#modalDate').html(obj.date_order);
+          $('#modalCustomer').html(obj.firstname + ' ' + obj.lastname);
+          $('#modalPhone').html(obj.phone);
         }
       });//end ajax
 } //end function

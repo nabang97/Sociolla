@@ -54,8 +54,8 @@ require_once('parts/head.php');
                                   </div>
                                   </td>
                                   <td>
-                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="acceptOrder(\' '.$order->order_number.'\')">Accept</button>
-                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="showOrderDetail(\' '.$order->order_number.'\')" data-toggle="modal" data-target="#myModal">Show Detail</button></td>
+                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="acceptOrder(\''.$order->order_number.'\')">Accept</button>
+                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="showOrderDetail(\''.$order->order_number.'\')" data-toggle="modal" data-target="#myModal">Show Detail</button></td>
                                   </tr>';
                         }
                        ?>
