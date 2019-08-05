@@ -81,50 +81,52 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                          <?php
+                                                            require_once('_controller/TransactionController.php');
+                                                            $data = new TransactionController();
+                                                            $carts = $data->getBagItem();
+                                                            $total = 0;
+                                                          ?>
+                                                          <?php foreach ($carts as $cart): ?>
+                                                            <?php
+                                                              $data = new TransactionController();
+                                                              $data = $data->getDetailProductFromBag($cart->id_detail_product);
 
-                                                        <?php if (isset($_SESSION['cart_item'])): ?>
-                                                          <?php foreach ($_SESSION['cart_item'] as $cart): ?>
+                                                              $array = explode(";", $cart->description);
+                                                              $size = substr($array[0], 5);
+                                                              $shade = substr($array[1], 6);
+                                                              $weight = substr($array[2], 7);
+
+                                                              $vari = new TransactionController();
+                                                              $variant = $vari->getDetailVariantFromBag($cart->id_detail_product, $size, $shade, $weight);
+                                                            ?>
                                                             <tr>
                                                                 <td class="product-thumbnail">
                                                                     <div class="pro-thumbnail-img">
-                                                                        <img src="<?= $cart->photo ?>" alt="">
+                                                                        <img src="<?= $variant->photo_url ?>" alt="">
                                                                     </div>
                                                                     <div class="pro-thumbnail-info text-left">
                                                                         <h6 class="product-title-2">
-                                                                            <a href="<?= $cart->url ?>">
-                                                                              <?php if ($cart->shade != "Tidak ada varian"): ?>
-                                                                                <?= $cart->shade ?>
-                                                                              <?php endif; ?>
-                                                                              <?= $cart->product ?>
-                                                                              <?php if ($cart->weight != "Tidak ada varian"): ?>
-                                                                                <?= $cart->weight ?>
-                                                                              <?php endif; ?>
-                                                                              <?php if ($cart->size != "Tidak ada varian"): ?>
-                                                                                <?= $cart->size ?>
-                                                                              <?php endif; ?>
-                                                                              <?php if ($cart->color != "Tidak ada varian"): ?>
-                                                                                <?= $cart->color ?>
-                                                                              <?php endif; ?>
-                                                                            </a>
+                                                                          <?= $data->name ?>
                                                                         </h6>
-                                                                        <p>Brand: <?= $cart->brand ?></p>
+                                                                        <p>Brand: <?= $data->brand ?></p>
                                                                         <!-- <p>Model: Grand s2</p>
                                                                         <p>Color: Black, White</p> -->
                                                                     </div>
                                                                 </td>
-                                                                <td class="product-price">Rp <?= number_format(($cart->price),0,',','.') ?></td>
+                                                                <td class="product-price">Rp <?= number_format(($cart->subtotal),0,',','.') ?></td>
                                                                 <td class="product-quantity">
                                                                     <div class="cart-plus-minus f-left">
-                                                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                        <input type="text" value="<?= $cart->quantity ?>" name="qtybutton" class="cart-plus-minus-box">
                                                                     </div>
                                                                 </td>
-                                                                <td class="product-subtotal">Rp <?= number_format(($cart->price),0,',','.') ?></td>
+                                                                <td class="product-subtotal">Rp <?= number_format(($cart->quantity * $cart->subtotal),0,',','.') ?></td>
                                                                 <td class="product-remove">
                                                                     <a href="#"><i class="zmdi zmdi-close"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            <?php $total = $total + ($cart->subtotal * $cart->quantity) ?>
                                                           <?php endforeach; ?>
-                                                        <?php endif; ?>
 
                                                     </tbody>
                                                 </table>
@@ -154,19 +156,19 @@
                                                         <table>
                                                             <tr>
                                                                 <td class="td-title-1">Cart Subtotal</td>
-                                                                <td class="td-title-2">$155.00</td>
+                                                                <td class="td-title-2"><?= number_format(($total),0,',','.') ?></td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="td-title-1">Discount</td>
-                                                                <td class="td-title-2">$15.00</td>
+                                                                <td class="td-title-2">0</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="td-title-1">Point Redeem</td>
-                                                                <td class="td-title-2">$00.00</td>
+                                                                <td class="td-title-2">0</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="order-total">Order Total</td>
-                                                                <td class="order-total-price">$170.00</td>
+                                                                <td class="order-total-price"><?= number_format(($total),0,',','.') ?></td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="td-title-1"><small>Beauty points earned</small></td>

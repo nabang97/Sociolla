@@ -129,7 +129,7 @@
                                                       <p class="color-title f-left">Size</p>
                                                       <div class="f-left" style="margin-top: 5px">
                                                         <?php foreach ($variants as $size): ?>
-                                                          <a href="#" class="btn btn-sm btn-default" style="margin: 3px"><?= $size->size ?></a>
+                                                          <button id="<?= $size->size_id ?>" onclick="changeVariant('<?= $size->photo ?>', '<?= $size->size_id ?>');" class="btn btn-sm btn-default" style="margin: 3px"><?= $size->size ?></button>
                                                         <?php endforeach; ?>
                                                       </div>
                                                   </div>
@@ -144,7 +144,7 @@
                                                       <p class="color-title f-left">Weight</p>
                                                       <div class="f-left" style="margin-top: 5px">
                                                         <?php foreach ($variants as $weight): ?>
-                                                          <a href="#" class="btn btn-sm btn-default" style="margin: 3px"><?= $weight->weight ?></a>
+                                                          <button id="<?= $weight->weight_id ?>" onclick="changeVariant('<?= $weight->photo ?>', '<?= $weight->weight_id ?>');" class="btn btn-sm btn-default" style="margin: 3px"><?= $weight->weight ?></button>
                                                         <?php endforeach; ?>
                                                       </div>
                                                   </div>
@@ -158,7 +158,7 @@
                                                       <p class="color-title f-left">Shade</p>
                                                       <div class="f-left" style="margin-top: 5px">
                                                         <?php foreach ($variants as $shade): ?>
-                                                          <a href="#" class="btn btn-sm btn-default" style="margin: 3px"><?= $shade->shade ?></a>
+                                                          <button id="<?= $shade->shade_id ?>" onclick="changeVariant('<?= $shade->photo ?>', '<?= $shade->shade_id ?>');" class="btn btn-sm btn-default" style="margin: 3px"><?= $shade->shade ?></button>
                                                         <?php endforeach; ?>
                                                       </div>
                                                   </div>
@@ -172,25 +172,16 @@
                                                 <div class="sin-plus-minus f-left clearfix">
                                                     <p class="color-title f-left">Qty</p>
                                                     <div class="cart-plus-minus f-left">
-                                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                        <input type="text" value="0" id="qty" name="qtybutton" class="cart-plus-minus-box">
                                                     </div>
                                                 </div>
                                                 <div class="sin-pro-action f-right">
-                                                    <ul class="action-button">
-                                                        <li>
-                                                            <a href="#" title="Wishlist" tabindex="0"><i class="zmdi zmdi-favorite"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview" tabindex="0"><i class="zmdi zmdi-zoom-in"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Compare" tabindex="0"><i class="zmdi zmdi-refresh"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" onclick="addToChart()"
-                                                            title="Add to cart" tabindex="0"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                        </li>
-                                                    </ul>
+                                                  <?php if (isset($_SESSION['auth'])): ?>
+                                                    <a href="#" class="btn btn-danger" onclick="addToChart()"
+                                                    title="Add to cart" tabindex="0"><i class="zmdi zmdi-shopping-cart-plus"></i> &nbsp;Add to Cart</a>
+                                                    <?php else: ?>
+                                                      <a href="login.php">Please login to shop</a>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,7 +202,17 @@
 <?php include('footer.php') ?>
 
 <script type="text/javascript">
+
+  function changeVariant(img, id) {
+    // window.history.replaceState(null, null, "/detail_product.php?shade="+id);
+    $('#zoom_03').attr('src', img);
+    $('#zoom_03').attr('data-zoom-image', img);
+    $('#'+id).focus();
+
+  }
+
   function addToChart() {
+
     $.ajax({ /* THEN THE AJAX CALL */
       url: "_action/addToCart.php",
       method : "POST",
@@ -220,11 +221,12 @@
             'product': '<?= $variantselected->produk ?>',
             'price': '<?= $variantselected->price ?>',
             'photo': '<?= $variantselected->photo ?>',
-            'shade': '<?= $variantselected->shade ?>',
-            'weight': '<?= $variantselected->weight ?>',
-            'size': '<?= $variantselected->size ?>',
+            'shade': '<?= $variantselected->shade_id ?>',
+            'weight': '<?= $variantselected->weight_id ?>',
+            'size': '<?= $variantselected->size_id ?>',
             'color': '<?= $variantselected->color_name ?>',
             'url': window.location.href,
+            'quantity': $('#qty').val(),
             },
       async : true,
       dataType : 'text',
