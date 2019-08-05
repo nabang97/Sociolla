@@ -42,41 +42,23 @@ require_once('parts/head.php');
                     </thead>
                     <tbody>
                       <?php
-                      $payments = $controllerPayment->showAllPayment();
+                      $orders = $controllerAdmin->showOrdersConfirmed();
 
-                      // $orders = $controllerAdmin->showOrders();
-                      //
-                      //   foreach ($orders as $order) {
-                      //     echo  '<tr>
-                      //             <td id="nomor-order">'.$order->order_number.'</td>
-                      //             <td id="email-customer">'.$order->customer.'</td>
-                      //             <td>
-                      //             <div class="badge-status">
-                      //             <center><span id="order-status">'.$order->status.'</span></center>
-                      //             </div>
-                      //             </td>
-                      //             <td>
-                      //             <button type="button" class="btn btn-outline-info btn-fw" onclick="acceptOrder(\''.$order->order_number.'\')" data-toggle="modal" data-target="#modalAccept">Accept</button>
-                      //             <button type="button" class="btn btn-outline-info btn-fw" onclick="showOrderDetail(\''.$order->order_number.'\')" data-toggle="modal" data-target="#myModal">Show Detail</button></td>
-                      //             </tr>';
-                      //   }
+                        foreach ($orders as $order) {
+                          echo  '<tr>
+                                  <td id="nomor-order">'.$order->order_number.'</td>
+                                  <td id="email-customer">'.$order->customer.'</td>
+                                  <td>
+                                  <div class="badge-status">
+                                  <center><span id="order-status">'.$order->status.'</span></center>
+                                  </div>
+                                  </td>
+                                  <td>
+                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="getAcceptOrder(\''.$order->order_number.'\')" data-toggle="modal" data-target="#modalAccept">Accept</button>
+                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="showOrderDetail(\''.$order->order_number.'\')" data-toggle="modal" data-target="#myModal">Show Detail</button></td>
+                                  </tr>';
+                        }
                        ?>
-                       <?php foreach ($payments as $payment): ?>
-                      <tr>
-                          <td id="nomor-order"> <?= $payment->order_number ?> </td>
-                          <td id="confirm-date"><?= $payment->confirm_date ?></td>
-                          <td>
-                             <div class="badge-status">
-                             <center><span id="order-status"><?= $payment->status?></span></center>
-                              </div>
-                          </td>
-                          <td>
-                          <button type="button" class="btn btn-outline-info btn-fw" onclick="getDataPayment('<?= $payment->order_number ?>','<?= $payment->confirm_date?>')" data-toggle="modal" data-target="#modalPaymentAccept">Accept
-                          </button>
-                          <button type="button" class="btn btn-outline-info btn-fw" onclick="showDetailPayment('<?= $payment->order_number ?>','<?= $payment->confirm_date?>')" data-toggle="modal" data-target="#modalPaymentDetail">Show Detail</button>
-                        </td>
-                        </tr>
-                       <?php endforeach; ?>
 
                     </tbody>
                   </table>
@@ -100,6 +82,6 @@ require_once('parts/head.php');
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-<?php include('modal/modal_payment_detail.php') ?>
-<?php include('modal/payment_accept_modal.php') ?>
+<?php include('modal/detail_order.php') ?>
+<?php include('modal/accept_modal.php') ?>
 <?php include('parts/footer_js.php') ?>

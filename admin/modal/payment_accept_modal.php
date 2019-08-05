@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modalAccept" role="dialog">
+<div class="modal fade" id="modalPaymentAccept" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -16,7 +16,7 @@
       </div>
       <div class="modal-footer">
         <div class="float-right">
-          <button type="submit" class="btn btn-gradient-primary mr-2" id="btn-accept-order">Add</button>
+          <button type="submit" class="btn btn-gradient-primary mr-2" id="btn-accept-payment" >Add</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         </div>
 

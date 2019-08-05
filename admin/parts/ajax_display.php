@@ -150,8 +150,31 @@ function DisplayProducts(){
         }
       });//end ajax
 } //end function
+function getDataPayment(id,date){
+  console.log(id +"|"+date);
+  // console.log(order_number+"|"+customer+"|"+status+"");
+  $( "#btn-accept-payment" ).click(function() {
+    acceptPayment(id,date)
+});
+} //end function
 
-
+function acceptPayment(id,date){
+  console.log(id +"|"+date);
+  // console.log(order_number+"|"+customer+"|"+status+"");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{
+          'accept-payment':1,
+          'id':id,
+          'date':date
+        },
+        async : true,
+        success: function(data){
+          location.reload(true);
+        }
+      });//end ajax
+} //end function
 
 function showOrderDetail(id){
   var order_number = document.getElementById('nomor-order').textContent;
@@ -180,6 +203,38 @@ function showOrderDetail(id){
       });//end ajax
 } //end function
 
+function showDetailPayment(id, date){
+console.log(id+""+date);
+displayDetailPayment(id, date);
+
+} //end function
+
+function displayDetailPayment(id, date){
+console.log(id+""+date);
+$.ajax({ /* THEN THE AJAX CALL */
+    url: "../_action/gets/getModal.php",
+    method : "POST",
+    data:{
+      'modal-verify-detail':1,
+      'id':id,
+      'date':date
+    },
+    async : true,
+    success: function(data){
+      var obj = $.parseJSON(data);
+       console.log(obj);
+      $('#modalOrderNumber').html(obj.order_number);
+      $('#modalDate').html(obj.confirm_date);
+      $('#modalPemilik').html(obj.owner_name);
+      $('#modal-status').html(obj.status);
+      $('#modalBank').html(obj.bank_transfer);
+      $('#modalRekening').html(obj.account_number);
+       $('#payment-proof').attr('src','../'+obj.payment_proof+'');
+
+    }
+  });//end ajax
+}
+
 function displayBags(ordernum){
     // console.log(ordernum);
     $.ajax({ /* THEN THE AJAX CALL */
@@ -192,7 +247,7 @@ function displayBags(ordernum){
         async : true,
         success: function(data){
          var obj = $.parseJSON(data);
-          // console.log(obj);
+          console.log(obj);
           $('#tableBags').find('tbody').empty();
            obj.forEach(function(objek){
              var code = objek.id_detail_product;
@@ -226,8 +281,7 @@ function displayPhoto(code,size,shade,weight,quantity,subtotal){
         },
         async : true,
         success: function(data){
-          // console.log($.parseJSON(data));
-          //sbanyak = quantity.toString();
+          console.log(data);
           var obj = $.parseJSON(data);
           // console.log(obj.toString());
 

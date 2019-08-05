@@ -1,6 +1,8 @@
 <?php
 include('../_controller/AdminController.php') ;
+require_once('../_controller/PaymentController.php');
 $controllerAdmin = new AdminController();
+$controllerPayment =new PaymentController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
