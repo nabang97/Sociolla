@@ -220,13 +220,21 @@ class AdminController
 
   function showBags($id){
     $stmt = $this->pdo->prepare(
-     "SELECT * FROM bags as b WHERE b.order_number = '".$id."'");
+     "SELECT * FROM bags as b WHERE b.order_number = '".$id."' WHERE status = 'Payment Accepted'" );
     $stmt->execute();
     $bags= $stmt->fetchAll(PDO::FETCH_OBJ);
     return $bags;
   }
 
-  function showPhotoOrder($ordernum,$size,$shade,$weight,$color){
+  function showBagsShippingStatus($id){
+    $stmt = $this->pdo->prepare(
+     "SELECT * FROM bags as b WHERE b.order_number = '".$id."' WHERE status = 'Shipping'" );
+    $stmt->execute();
+    $bags= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $bags;
+  }
+
+  function showPhotoOrder($ordernum,$size,$shade,$weight){
     $stmt = $this->pdo->prepare("SELECT dv.photo_url as photo, vs.value as shade, vsz.value as size, vw.value as weight, vc.value as color, dv.price as price
     FROM detail_variants as dv
     LEFT JOIN variant_shades as vs ON dv.shade_id = vs.shade_id
@@ -235,7 +243,7 @@ class AdminController
     LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
     LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
     LEFT JOIN bags as b ON dp.id_detail_product = b.id_detail_product
-    WHERE dv.id_detail_product = '".$ordernum."' AND dv.size_id = ".$size." AND dv.shade_id = ".$shade." AND dv.weight_id = ".$weight." AND dv.color_id = ".$color."");
+    WHERE dv.id_detail_product = '".$ordernum."' AND dv.size_id = ".$size." AND dv.shade_id = ".$shade." AND dv.weight_id = ".$weight."");
     $stmt->execute();
     $photo= $stmt->fetch(PDO::FETCH_OBJ);
     return $photo;
@@ -280,6 +288,18 @@ class AdminController
     $stmt->execute();
     $orders = $stmt->fetch(PDO::FETCH_OBJ);
     return $orders;
+  }
+
+  // --------------------- UPDATE STATUS ORDER------------------------//
+
+  function acceptOrder($order){
+    $stmt = $this->pdo->prepare("UPDATE orders
+    SET status = 'Payment Accepted'
+    WHERE order_number=:order ");
+    $stmt->execute(['order'=> $order]);
+    $orders = $stmt->fetch(PDO::FETCH_OBJ);
+    header("Location: ../../admin/place_order.php");
+
   }
 
 

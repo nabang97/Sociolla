@@ -151,23 +151,7 @@ function DisplayProducts(){
       });//end ajax
 } //end function
 
-function acceptOrder(){
-  var order_number = document.getElementById('nomor-order').textContent;
-  var customer = document.getElementById('email-customer').textContent;
-  var status = document.getElementById('order-status').textContent;
-  console.log(order_number+"|"+customer+"|"+status+"");
-    // $.ajax({ /* THEN THE AJAX CALL */
-    //     url: "../_action/gets/getDisplay.php",
-    //     method : "POST",
-    //     data:{'display-products':1},
-    //     async : true,
-    //     success: function(data){
-    //       console.log(data);
-    //
-    //       //$('#tableSubCategories').find('tbody').html(data);
-    //     }
-    //   });//end ajax
-} //end function
+
 
 function showOrderDetail(id){
   var order_number = document.getElementById('nomor-order').textContent;
@@ -220,15 +204,15 @@ function displayBags(ordernum){
              var size = split[0].split(":")[1];
              var shade = split[1].split(":")[1];
              var weight = split[2].split(":")[1];
-             var color = split[3].split(":")[1];
-             console.log(size+"|"+shade+"|"+weight+"|"+color);
-             displayPhoto(code,size,shade,weight,color,quantity,subtotal);
+             console.log(size+"|"+shade+"|"+weight);
+             displayPhoto(code,size,shade,weight,quantity,subtotal);
            });
         }
       });//end ajax
 } //end function
 
-function displayPhoto(code,size,shade,weight,color,quantity,subtotal){
+function displayPhoto(code,size,shade,weight,quantity,subtotal){
+
     // console.log(code+"|"+size+"|"+shade+"|"+weight+"|"+color);
     $.ajax({ /* THEN THE AJAX CALL */
         url: "../_action/gets/getDisplay.php",
@@ -238,17 +222,16 @@ function displayPhoto(code,size,shade,weight,color,quantity,subtotal){
           'code':code,
           'size':size,
           'shade':shade,
-          'weight':weight,
-          'color':color,
+          'weight':weight
         },
         async : true,
         success: function(data){
-          console.log($.parseJSON(data));
-
+          // console.log($.parseJSON(data));
+          //sbanyak = quantity.toString();
           var obj = $.parseJSON(data);
-          console.log(obj.toString());
+          // console.log(obj.toString());
 
-          $('#tableBags').find('tbody').append("<tr><td><img src='"+obj.photo+"'></td><td><div id='desc-size'>Size:"+obj.size+"</div><div id='desc-shade'>Shade:"+obj.shade+"</div><div id='desc-weight'>Weight:"+obj.weight+"</div></td><td></td></tr>");
+          $('#tableBags').find('tbody').append("<tr><td><img src='"+obj.photo+"'></td><td><div id='desc-size'>Size:"+obj.size+"</div><div id='desc-shade'>Shade:"+obj.shade+"</div><div id='desc-weight'>Weight:"+obj.weight+"</div></td><td>"+quantity+"</td><td>"+subtotal+"</td></tr>");
 
           // if (obj.size != "") {
           //     $('#desc-size').css('display', 'block');

@@ -29,6 +29,15 @@ if (isset($_POST['weight'])) {
   }
 }
 
+if (isset($_POST['accept-order'])) {
+  $order = $_POST['code'];
+  echo "test";
+  if ((isset($order) != "")) {
+      $acceptedOrder = $controllerAdmin->acceptOrder($order);
+      
+  }
+}
+
 if (isset($_POST['product_variant'])) {
   $product = $_POST['product'];
   $price= $_POST['price'];

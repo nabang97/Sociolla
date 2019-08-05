@@ -40,8 +40,7 @@
     $size = $_POST['size'];
     $shade=$_POST['shade'];
     $weight=$_POST['weight'];
-    $color=$_POST['color'];
-    $photo = $start->showPhotoOrder($code,$size,$shade,$weight,$color);
+    $photo = $start->showPhotoOrder($code,$size,$shade,$weight);
     echo json_encode($photo);
   }
 
