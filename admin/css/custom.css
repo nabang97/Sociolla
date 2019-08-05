@@ -11,3 +11,11 @@
   background-color: pink;
   border-radius: 20px;
 }
+#desc-size,#desc-weight,#desc-shade{
+  display: block;
+}
+#tableBags>td>img {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 100%;
+  }

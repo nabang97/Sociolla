@@ -54,7 +54,7 @@ require_once('parts/head.php');
                                   </div>
                                   </td>
                                   <td>
-                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="acceptOrder(\''.$order->order_number.'\')">Accept</button>
+                                  <button type="button" class="btn btn-outline-info btn-fw" onclick="acceptOrder(\''.$order->order_number.'\')" data-toggle="modal" data-target="#modalAccept">Accept</button>
                                   <button type="button" class="btn btn-outline-info btn-fw" onclick="showOrderDetail(\''.$order->order_number.'\')" data-toggle="modal" data-target="#myModal">Show Detail</button></td>
                                   </tr>';
                         }
@@ -83,4 +83,5 @@ require_once('parts/head.php');
   </div>
   <!-- container-scroller -->
 <?php include('modal/detail_order.php') ?>
+<?php include('modal/accept_modal.php') ?>
 <?php include('parts/footer_js.php') ?>

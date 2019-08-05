@@ -55,11 +55,38 @@
               <tr>
                 <td>Status</td>
                 <td>:</td>
-                <td id="modalStatus">tes</td>
+                <td id="modalStatus">
+                  <div class="badge-status">
+                  <center><span id="modal-status"></span></center>
+                  </div>
+                </td>
               </tr>
             </table>
           </div>
           <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table" id="tableBags">
+              <thead>
+                <tr>
+                <th>Produk</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+              </tr>
+              </thead>
+            <tbody>
+              <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+
+            </table>
+          </div>
         </div>
       </div>
       <div class="modal-footer">

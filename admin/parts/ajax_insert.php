@@ -359,4 +359,21 @@ function insertProduct(){
   }
 } //end function
 
+function acceptOrder(ordernum){
+  var order_number = document.getElementById('nomor-order').textContent;
+  var customer = document.getElementById('email-customer').textContent;
+  var status = document.getElementById('order-status').textContent;
+  console.log(order_number+"|"+customer+"|"+status+"");
+    $.ajax({ /* THEN THE AJAX CALL */
+        url: "../_action/inputs/insert.php",
+        method : "POST",
+        data:{'accept-order':1, 'code':order_number},
+        async : true,
+        success: function(data){
+          // console.log(data);
+
+          //$('#tableSubCategories').find('tbody').html(data);
+        }
+      });//end ajax
+} //end function
 </script>
