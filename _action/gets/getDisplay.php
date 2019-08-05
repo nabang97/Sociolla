@@ -27,6 +27,24 @@
     }
   }
 
+  if (isset($_POST['show-bags'])) {
+    if (isset($_POST['ordernum']) != "") {
+      $id=$_POST['ordernum'];
+      $bags = $start->showBags($id);
+       echo json_encode($bags);
+    }
+  }
+
+  if (isset($_POST['get-photo'])){
+    $code = $_POST['code'];
+    $size = $_POST['size'];
+    $shade=$_POST['shade'];
+    $weight=$_POST['weight'];
+    $color=$_POST['color'];
+    $photo = $start->showPhotoOrder($code,$size,$shade,$weight,$color);
+    echo json_encode($photo);
+  }
+
   if (isset($_POST['display-subcategory'])) {
     $product_subcategories = $start->showProductSubCategoriesAll();
     foreach($product_subcategories as $product_subcategory){
