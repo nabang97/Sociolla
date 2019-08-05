@@ -6,7 +6,7 @@ if (isset($_POST['modal-detail'])) {
     $id = $_POST['id'];
     $start = new AdminController();
     $orders = $start->showSelectedOrder($id);
-    echo $orders->order_number;
+    echo json_encode($orders);
     //return $orders;
   }
 }

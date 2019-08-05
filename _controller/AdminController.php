@@ -242,7 +242,7 @@ class AdminController
     $products = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
-  
+
   function showSelectedOrder($id){
     $stmt = $this->pdo->prepare("SELECT O.*,sa.firstname as firstname,
       sa.lastname as lastname,
@@ -255,7 +255,7 @@ class AdminController
       LEFT JOIN users as c ON O.customer = c.email
       WHERE O.order_number = '".$id."'");
     $stmt->execute();
-    $orders= $stmt->fetch(PDO::FETCH_OBJ);
+    $orders = $stmt->fetch(PDO::FETCH_OBJ);
     return $orders;
   }
 
