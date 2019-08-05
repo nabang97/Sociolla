@@ -100,4 +100,11 @@ class AddressController
      return $products;
   }
 
+  function showSubdistricts($id){
+    $query = $this->pdo->prepare("SELECT * FROM subdistricts WHERE id_city = '".$id."'");
+     $query->execute();
+     $products= $query->fetchAll(PDO::FETCH_OBJ);
+     return $products;
+  }
+
 }

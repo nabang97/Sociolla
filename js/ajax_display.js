@@ -167,5 +167,25 @@
           });
         });
 
+        $("#select-city").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
+         var selected = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
+         //var dataString = "allbooks="+allbooks; /* STORE THAT TO A DATA STRING */
+          console.log(selected);
+           $.ajax({ /* THEN THE AJAX CALL */
+              /* TYPE OF METHOD TO USE TO PASS THE DATA */
+             url: "_action/gets/getAddress.php",
+             method : "POST",
+             data:{
+               'show-subdistrict':1,
+               'selected':selected
+             },
+             async : true,
+             dataType : 'text',
+             success: function(data){
+              $('#select-subdistrict').html(data);
+             }
+           });
+         });
+
 
   });

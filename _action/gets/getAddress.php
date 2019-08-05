@@ -19,4 +19,12 @@ if (isset($_POST['show-cities'])) {
     echo "<option value='". $city->city_id ."'>". $city->name."</option>";
   }
 }
+
+if (isset($_POST['show-subdistrict'])) {
+  $id = $_POST['selected'];
+  $provinces = $start->showSubdistricts($id);
+  foreach($provinces as $city){
+    echo "<option value='". $city->id_subdistrict ."'>". $city->name."</option>";
+  }
+}
 ?>
