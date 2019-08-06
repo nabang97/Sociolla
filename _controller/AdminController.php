@@ -186,12 +186,13 @@ class AdminController
   }
   function showAllProductVariants(){
     $stmt = $this->pdo->prepare(
-     "SELECT p.code_product as code, p.name as produk, vs.name as shade, vc.value as color, vw.value as weight, vsz.value  as size, dv.price as price, dv.stock as stock, dv.photo_url as photo
+     "SELECT p.code_product as code, p.name as produk, vs.name as shade, vw.value as weight, vc.value  as color, vsz.value  as size, dv.price as price, dv.stock as stock, dv.photo_url as photo
       FROM detail_variants as dv
-      LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+
       LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
       LEFT JOIN products as p ON dp.code_product = p.code_product
       LEFT JOIN variant_shades as vs ON dv.shade_id=vs.shade_id
+      LEFT JOIN variant_colors as vc ON vs.color_id=vc.color_id
       LEFT JOIN variant_weight as vw ON dv.weight_id=vw.weight_id
       LEFT JOIN variant_size as vsz ON dv.size_id=vsz.size_id
     ");
@@ -211,7 +212,25 @@ class AdminController
       sa.phone_number as phone
       FROM orders as O
       LEFT JOIN shipping_address as sa ON O.shipping_address = sa.id_address
-      LEFT JOIN users as c ON O.customer = c.email
+      LEFT JOIN users as c ON O.customer = c.email WHERE O.status = 'Awaiting Payment Confirmation'
+    ");
+    $stmt->execute();
+    $orders= $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $orders;
+  }
+
+  function showOrdersConfirmed(){
+    $stmt = $this->pdo->prepare(
+     "SELECT O.*,
+      sa.firstname as firstname,
+      sa.lastname as lastname,
+      sa.subdistrict as kelurahan,
+      sa.postal_code as pos,
+      sa.address as address,
+      sa.phone_number as phone
+      FROM orders as O
+      LEFT JOIN shipping_address as sa ON O.shipping_address = sa.id_address
+      LEFT JOIN users as c ON O.customer = c.email WHERE O.status = 'Payment Accepted'
     ");
     $stmt->execute();
     $orders= $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -220,7 +239,7 @@ class AdminController
 
   function showBags($id){
     $stmt = $this->pdo->prepare(
-     "SELECT * FROM bags as b WHERE b.order_number = '".$id."' WHERE status = 'Payment Accepted'" );
+     "SELECT * FROM bags as b WHERE b.order_number = '".$id."'" );
     $stmt->execute();
     $bags= $stmt->fetchAll(PDO::FETCH_OBJ);
     return $bags;
@@ -240,7 +259,7 @@ class AdminController
     LEFT JOIN variant_shades as vs ON dv.shade_id = vs.shade_id
     LEFT JOIN variant_size as vsz ON dv.size_id = vsz.size_id
     LEFT JOIN variant_weight as vw ON dv.weight_id = vw.weight_id
-    LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+    LEFT JOIN variant_colors as vc ON vs.color_id = vc.color_id
     LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
     LEFT JOIN bags as b ON dp.id_detail_product = b.id_detail_product
     WHERE dv.id_detail_product = '".$ordernum."' AND dv.size_id = ".$size." AND dv.shade_id = ".$shade." AND dv.weight_id = ".$weight."");
@@ -294,13 +313,20 @@ class AdminController
 
   function acceptOrder($order){
     $stmt = $this->pdo->prepare("UPDATE orders
-    SET status = 'Payment Accepted'
+    SET status = 'Shipping'
     WHERE order_number=:order ");
     $stmt->execute(['order'=> $order]);
     $orders = $stmt->fetch(PDO::FETCH_OBJ);
-    header("Location: ../../admin/place_order.php");
 
   }
 
+  function acceptPayment($order){
+    $stmt = $this->pdo->prepare("UPDATE orders
+    SET status = 'Payment Accepted'
+    WHERE order_number=:order");
+    $stmt->execute(['order'=> $order]);
+    $orders = $stmt->fetch(PDO::FETCH_OBJ);
+
+  }
 
 }

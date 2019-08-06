@@ -37,15 +37,16 @@ class SystemController
      dv.shade_id as shade_id, vs.value as shade,
      dv.weight_id as weight_id, vw.value as weight,
      dv.size_id as size_id,vsz.value  as size,
-     dv.color_id as color_id,
+     vs.color_id as color_id,
      dv.price as price,
      dv.stock as stock,
      dv.photo_url as photo
       FROM detail_variants as dv
-      LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+
       LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
       LEFT JOIN products as p ON dp.code_product = p.code_product
       LEFT JOIN variant_shades as vs ON dv.shade_id=vs.shade_id
+      LEFT JOIN variant_colors as vc ON vs.color_id = vc.color_id
       LEFT JOIN variant_weight as vw ON dv.weight_id=vw.weight_id
       LEFT JOIN variant_size as vsz ON dv.size_id=vsz.size_id
       LEFT JOIN brands as b ON p.brand_id = b.brand_id
@@ -64,15 +65,16 @@ class SystemController
      dv.shade_id as shade_id, vs.value as shade,
      dv.weight_id as weight_id, vw.value as weight,
      dv.size_id as size_id,vsz.value  as size,
-     dv.color_id as color_id, vc.value as color,
+     vs.color_id as color_id, vc.value as color,
      dv.price as price,
      dv.stock as stock,
      dv.photo_url as photo
       FROM detail_variants as dv
-      LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+
       LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
       LEFT JOIN products as p ON dp.code_product = p.code_product
       LEFT JOIN variant_shades as vs ON dv.shade_id=vs.shade_id
+      LEFT JOIN variant_colors as vc ON vs.color_id = vc.color_id
       LEFT JOIN variant_weight as vw ON dv.weight_id=vw.weight_id
       LEFT JOIN variant_size as vsz ON dv.size_id=vsz.size_id
       LEFT JOIN brands as b ON p.brand_id = b.brand_id
@@ -100,15 +102,16 @@ class SystemController
      dv.shade_id as shade_id, vs.value as shade,
      dv.weight_id as weight_id, vw.value as weight,
      dv.size_id as size_id,vsz.value  as size,
-     dv.color_id as color_id, vc.value as color, vc.name as color_name,
+     vs.color_id as color_id, vc.value as color, vc.name as color_name,
      dv.price as price,
      dv.stock as stock,
      dv.photo_url as photo
       FROM detail_variants as dv
-      LEFT JOIN variant_colors as vc ON dv.color_id = vc.color_id
+
       LEFT JOIN detail_products as dp ON dv.id_detail_product = dp.id_detail_product
       LEFT JOIN products as p ON dp.code_product = p.code_product
       LEFT JOIN variant_shades as vs ON dv.shade_id=vs.shade_id
+      LEFT JOIN variant_colors as vc ON vs.color_id = vc.color_id
       LEFT JOIN variant_weight as vw ON dv.weight_id=vw.weight_id
       LEFT JOIN variant_size as vsz ON dv.size_id=vsz.size_id
       LEFT JOIN brands as b ON p.brand_id = b.brand_id

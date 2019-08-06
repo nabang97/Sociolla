@@ -34,7 +34,19 @@ if (isset($_POST['accept-order'])) {
   echo "test";
   if ((isset($order) != "")) {
       $acceptedOrder = $controllerAdmin->acceptOrder($order);
-      
+      echo "success";
+
+  }
+}
+
+if (isset($_POST['accept-payment'])) {
+  $order = $_POST['id'];
+  $date = $_POST['date'];
+  echo "test";
+  if ((isset($order) != "")) {
+      $acceptedPayment = $controllerAdmin->acceptPayment($order);
+      echo "success";
+
   }
 }
 
